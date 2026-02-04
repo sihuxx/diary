@@ -16,10 +16,13 @@ get("/logout", function () {
 get("/diaryAdd", function () {
   view("diary/form");
 });
+post("/diaryEdit", function () {
+  view("diary/form");
+});
 get("/calendar", function () {
   view("diary/calendar");
 });
-post("/diaryDetail", function() {
+post("/diaryDetail", function () {
   view("diary/detail");
 });
 post("/signUp", function () {
@@ -50,10 +53,9 @@ post("/signIn", function () {
 post("/diaryInsert", function () {
   extract($_POST);
   $file = $_FILES["file"];
-  $up_path = "./img/diary/" . $file["name"];
   $path = "/img/diary/" . $file["name"];
   $user = ss();
-  if (move_uploaded_file($file["tmp_name"], $up_path)) {
+  if (move_uploaded_file($file["tmp_name"], ".$path")) {
     db::exec("insert into diary (text, img, user_idx, emotion) values ('$text', '$path', '$user->idx', '$emotion')");
   } else {
     db::exec("insert into diary (text, user_idx, emotion) values ('$text', '$user->idx', '$emotion')");
@@ -64,4 +66,15 @@ post("/diaryDelete", function () {
   extract($_POST);
   db::exec("delete from diary where idx = '$idx'");
   move("/", "일기가 삭제되었습니다");
+});
+post("/diaryUpdate", function() {
+  extract($_POST);
+  $file = $_FILES["file"];
+  $path = "/img/diary/" . $file["name"];
+  if(move_uploaded_file($file["tmp_name"], ".$path")) {
+    db::exec("update diary set text = '$text', emotion = '$emotion', img = '$path' where idx = '$idx'");
+    } else {
+    db::exec("update diary set text = '$text', emotion = '$emotion' where idx = '$idx'");
+  }
+  move("/", "일기 수정 성공");
 });
