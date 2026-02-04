@@ -18,7 +18,7 @@ $emotion = db::fetchAll("select * from emotion");
   <form action="<?= $url ?>" method="post" enctype="multipart/form-data">
     <h3>
       <?php if ($isEdit) { ?>
-      <input type="hidden" value="<?=$diary->idx?>" name="idx">
+      <input required type="hidden" value="<?=$diary->idx?>" name="idx">
         <?= $diary->date ?>
       <?php } else { ?>
         <?= $year ?>-<?= $month ?>-<?= $day ?>

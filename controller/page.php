@@ -25,6 +25,20 @@ get("/calendar", function () {
 post("/diaryDetail", function () {
   view("diary/detail");
 });
+post("/emoEdit", function() {
+  view("admin/emoEdit");
+});
+get("/emotionAdmin", function() {
+  view("admin/emotion");
+});
+get("/userAdmin", function() {
+  view("admin/user");
+});
+post("/userDelete", function() {
+  extract($_POST);
+  db::exec("delete from user where idx = '$idx'");
+  move("/", "탈퇴 처리 되었습니다");
+});
 post("/signUp", function () {
   extract($_POST);
   if (db::fetch("select * from user where id = '$id'")) {
@@ -76,5 +90,10 @@ post("/diaryUpdate", function() {
     } else {
     db::exec("update diary set text = '$text', emotion = '$emotion' where idx = '$idx'");
   }
-  move("/", "일기 수정 성공");
+  back("일기 수정 성공");
+});
+post("/emoUpdate", function() {
+  extract($_POST);
+  db::exec("update emotion set title = '$title', color = '$color' where idx = '$idx'");
+  back("감정 수정 성공");
 });
