@@ -1,6 +1,8 @@
-*{margin: 0;padding: 0;list-style: none;text-decoration: none;box-sizing: border-box;color: inherit;}
+*{font-family: font; margin: 0;padding: 0;list-style: none;text-decoration: none;box-sizing: border-box;color: inherit;font-family: font;}
 body  {background-color: #fafafa;}
- 
+
+.btn {background-color: #333;color: white;border-radius: 7.5px;padding: 10px;border: 0;}
+
 /* 헤더 */
 header {width: 100%;background-color: white;border-bottom: 1px solid;height: 80px;display: flex;justify-content: center;align-items: center;}
 header .header-content {width: 1200px;display: flex;justify-content: space-between;align-items: center;}
@@ -16,4 +18,26 @@ header .header-content nav a { width: 100px;height: 40px; border-radius: 15px;li
 .form-box form > div > a {color: #000000;font-weight: 500;}
 .form-box form label {display: block;width: 80px;}
 .form-box form input {padding: 10px;border: 1px solid #b1b1b1;width: 300px;border-radius: 5px;}
-.form-box form button {background-color: #333;color: white;border-radius: 7.5px;padding: 10px;border: 0;margin-top: 30px;}
+.form-box form button {margin-top: 30px;}
+
+/* 일기 */
+.diary-box {display: flex;justify-content: center;flex-direction: column; align-items: center;width: 100vw;margin-top: 100px;}
+.diary-box form{display: flex;flex-direction: column;align-items: start;justify-content: center;gap: 30px;}
+.diary-box form h3{font-size: 22.5px;}
+.diary-box form textarea {font-size: 17px;font-family: font; resize: none;border: 0;width: 800px;height: 400px;padding: 10px;outline: none;}
+.diary-box form select {padding: 7.5px;}
+
+/* 일기 조회 */
+.index-box{flex-direction: column; display: flex;justify-content: start;padding-top: 100px; align-items: center;width: 100vw;height: calc(100vh - 80px);}
+.index-box > h3 {font-size: 22.5px;margin-bottom: 50px;}
+.index-box .diarys > p {font-size: 18px;color: #919191;margin-bottom: 30px;}
+.index-box .diarys {display: grid;gap: 20px;grid-template-columns: repeat(1fr, 4);}
+.index-box .diary {display: flex;flex-direction: column;align-items: start;justify-content: center;gap: 10px;background-color: white;}
+.index-box .diary .diary-text {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 250px;font-size: 18px;font-weight: 500;}
+.index-box .diary .diary-date {color: #333;}
+.index-box .diary a {color: #919191;}
+.index-box .diary-content {padding: 20px;display: flex;flex-direction: column;gap: 7.5px;}
+.index-box .diary-emotion {padding:5px;background-color: #333;color: white;width: fit-content;border-radius: 5px;}
+.index-box .diary-img{width: 300px;height: 300px;overflow: hidden;}
+.index-box .diary-img img{transition:.3s; width: 300px;height: 300px;object-fit: cover;}
+.index-box .diary-img:hover img {scale: 1.1;}

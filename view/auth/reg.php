@@ -19,7 +19,7 @@
     </div>
     <div>
       <p>이미 계정이 있으신가요?</p>
-      <a href="/login">로그인</a>
+      <a href="/login" class="btn">로그인</a>
     </div>
     <button>회원가입</button>
   </form>

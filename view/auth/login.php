@@ -13,6 +13,6 @@
       <p>계정이 없으신가요?</p>
       <a href="/reg">회원가입</a>
     </div>
-    <button>로그인</button>
+    <button class="btn">로그인</button>
   </form>
 </main>

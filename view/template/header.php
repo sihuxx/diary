@@ -35,6 +35,8 @@
         <a href="/userAdmin">회원 관리</a>
         <a href="/logout">로그아웃</a>
         <?php } else {?>
+        <a href="/diaryAdd">일기 쓰기</a>
+        <a href="/calendar">캘린더</a>
         <a href="/logout">로그아웃</a>
         <?php }?>
       </nav>
