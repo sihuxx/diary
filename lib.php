@@ -19,17 +19,20 @@ function alert($msg)
   echo "<script>alert('$msg')</script>";
 
 }
-function view($page)
+function view($page, $data = [])
 {
+  extract($data);
   require_once '../view/template/header.php';
   require_once "../view/$page.php";
   require_once '../view/template/footer.php';
 }
-function hashPsw($psw) {
+function hashPsw($psw)
+{
   $salt = bin2hex(random_bytes(32));
   $h_psw = hash("sha256", $psw . $salt);
   return [$h_psw, $salt];
 }
-function ss() {
+function ss()
+{
   return $_SESSION["ss"] ?? false;
 }

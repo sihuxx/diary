@@ -13,11 +13,14 @@ get("/logout", function () {
   session_destroy();
   move("/", "로그아웃 되었습니다");
 });
-get("/diaryAdd", function() {
+get("/diaryAdd", function () {
   view("diary/form");
 });
-get("/calendar", function() {
+get("/calendar", function () {
   view("diary/calendar");
+});
+post("/diaryDetail", function() {
+  view("diary/detail");
 });
 post("/signUp", function () {
   extract($_POST);
@@ -44,7 +47,7 @@ post("/signIn", function () {
     back("존재하지 않는 아이디입니다");
   }
 });
-post("/diaryAdd", function () {
+post("/diaryInsert", function () {
   extract($_POST);
   $file = $_FILES["file"];
   $up_path = "./img/diary/" . $file["name"];
@@ -57,6 +60,8 @@ post("/diaryAdd", function () {
   }
   move("/", "일기 작성 성공");
 });
-get("/diary/{idx}", function($idx)) {
-  view("diary/detail");
-}
+post("/diaryDelete", function () {
+  extract($_POST);
+  db::exec("delete from diary where idx = '$idx'");
+  move("/", "일기가 삭제되었습니다");
+});

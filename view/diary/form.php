@@ -11,11 +11,11 @@ $emotion = db::fetchAll("select * from emotion");
 ?>
 <main class="diary-box">
   <?php if (ss()) { ?>
-  <form action="/diaryAdd" method="post" enctype="multipart/form-data">
+  <form action="/diaryInsert" method="post" enctype="multipart/form-data">
       <h3><?=$year?>년 <?=$month?>월 <?=$day?>일</h3>
       <input type="file" name="file">
-      <textarea name="text" placeholder="내용을 입력해주세요"></textarea>
-      <select name="emotion">
+      <textarea name="text" placeholder="내용을 입력해주세요" required></textarea>
+      <select name="emotion"required>
         <?php foreach($emotion as $emo) { ?>
           <option value="<?=$emo->idx?>"><?=$emo->title?></option>
         <?php } ?>
