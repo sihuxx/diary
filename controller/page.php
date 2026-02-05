@@ -25,8 +25,11 @@ get("/calendar", function () {
 post("/diaryDetail", function () {
   view("diary/detail");
 });
+get("/emoAdd", function() {
+  view("admin/emoForm");
+});
 post("/emoEdit", function() {
-  view("admin/emoEdit");
+  view("admin/emoForm");
 });
 get("/emotionAdmin", function() {
   view("admin/emotion");
@@ -79,7 +82,7 @@ post("/diaryInsert", function () {
 post("/diaryDelete", function () {
   extract($_POST);
   db::exec("delete from diary where idx = '$idx'");
-  move("/", "일기가 삭제되었습니다");
+  move("/", "일기 삭제 성공");
 });
 post("/diaryUpdate", function() {
   extract($_POST);
@@ -92,8 +95,18 @@ post("/diaryUpdate", function() {
   }
   back("일기 수정 성공");
 });
+post("/emoInsert", function() {
+  extract($_POST);
+  db::exec("insert into emotion (title, color) values ('$title', '$color')");
+  move("/emotionAdmin","감정 추가 성공");
+  });
+  post("/emoDelete", function() {
+    extract($_POST);
+    db::exec("delete from emotion where idx = '$idx'");
+    move("/emotionAdmin","감정 삭제 성공");
+});
 post("/emoUpdate", function() {
   extract($_POST);
   db::exec("update emotion set title = '$title', color = '$color' where idx = '$idx'");
-  back("감정 수정 성공");
+  move("/emotionAdmin","감정 수정 성공");
 });

@@ -4,6 +4,7 @@ $emotion = db::fetchAll("select * from emotion");
 
 <main class="table-box">
   <h3>감정 관리</h3>
+  <a class="btn" style="margin-bottom:30px;" href="/emoAdd">감정 추가</a>
   <table>
     <thead>
       <th>이름</th>
@@ -18,14 +19,15 @@ $emotion = db::fetchAll("select * from emotion");
           <td><?= $emo->title ?></td>
           <td>
             <div>
-              #<?= $emo->color ?><span style="background-color:#<?= $emo->color ?>"></span>
+              <?= $emo->color ?><span style="background-color:<?= $emo->color ?>"></span>
             </div>
           </td>
           <td><?= $emo->create_at ?></td>
           <td>
-            <form action="/emoEdit" method="post">
+            <form method="post">
               <input type="hidden" name="idx" value="<?=$emo->idx?>">
-              <button>수정</button>
+              <button class="btn" formaction="/emoEdit">수정</button>
+              <button class="btn" style="background-color:red" formaction="/emoDelete">삭제</button>
             </form>
           </td>
         </tr>
